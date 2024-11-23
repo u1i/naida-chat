@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delve Chat</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script type="importmap">
+    {
+        "imports": {
+            "@google/generative-ai": "https://esm.run/@google/generative-ai@0.2.0"
+        }
+    }
+    </script>
+    <script type="module" src="app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="https://www.naida.ai" target="_blank" rel="noopener noreferrer" class="logo-link">
+                <img src="https://static.naida.ai/logo.png" alt="Naida AI Logo" class="logo">
+            </a>
+            <div class="settings-toggle">
+                <button id="settingsBtn" title="Settings" class="icon-button">
+                    <i class="ri-settings-3-line"></i>
+                </button>
+                <button id="themeToggle" title="Toggle theme" class="icon-button">
+                    <i class="ri-sun-line"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="settingsOverlay" class="settings-overlay hidden"></div>
+        <div id="settingsPanel" class="settings-panel hidden">
+            <h3>Settings</h3>
+            <div class="setting-item">
+                <label for="apiKey">API Key:</label>
+                <input type="password" id="apiKey" placeholder="Enter your Gemini API key">
+                <button id="testApiKey" class="test-button">Test API Key</button>
+            </div>
+            <div class="setting-item">
+                <label for="modelSelect">Model:</label>
+                <select id="modelSelect">
+                </select>
+            </div>
+            <div class="setting-item">
+                <label for="temperature">Temperature (0-2):</label>
+                <input type="range" id="temperature" min="0" max="2" step="0.1" value="1">
+                <span id="temperatureValue">1.0</span>
+            </div>
+            <div class="setting-item">
+                <label for="systemPrompt">System Prompt:</label>
+                <textarea id="systemPrompt" rows="6" placeholder="Enter the system prompt for the AI"></textarea>
+            </div>
+        </div>
+
+        <div class="chat-container">
+            <div id="chatMessages" class="chat-messages">
+                <div class="welcome-message">
+                    <h2>Welcome to Naida AI Chat!</h2>
+                    <p>To get started:</p>
+                    <ol>
+                        <li>Click the settings icon (<i class="ri-settings-3-line"></i>) in the top right</li>
+                        <li>Get your API key from <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer">Google AI Studio</a></li>
+                        <li>Paste your API key in the settings</li>
+                        <li>Start chatting!</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="chat-input-container">
+                <textarea id="messageInput" placeholder="Type your message..." rows="1"></textarea>
+                <button id="sendButton" title="Send message"><i class="ri-send-plane-fill"></i></button>
+                <button id="newChatButton" title="Start fresh chat" class="icon-button">
+                    <i class="ri-refresh-line"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
