@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naida Chat</title>
+    <title>AI Chat – Playground</title>
+    <link rel="icon" type="image/x-icon" href="https://static.naida.ai/logo.ico">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script type="importmap">
@@ -22,6 +23,9 @@
                 <img src="https://static.naida.ai/logo.png" alt="Naida AI Logo" class="logo">
             </a>
             <div class="settings-toggle">
+                <button id="helpBtn" title="Help & Privacy" class="icon-button">
+                    <i class="ri-question-line"></i>
+                </button>
                 <button id="settingsBtn" title="Settings" class="icon-button">
                     <i class="ri-settings-3-line"></i>
                 </button>
@@ -33,6 +37,9 @@
 
         <div id="settingsOverlay" class="settings-overlay hidden"></div>
         <div id="settingsPanel" class="settings-panel hidden">
+            <button id="settingsClose" class="settings-close" title="Close settings" onclick="this.parentElement.classList.add('hidden');document.getElementById('settingsOverlay').classList.add('hidden');">
+                <i class="ri-close-line"></i>
+            </button>
             <h3>Settings</h3>
             <div class="setting-item">
                 <label for="apiKey">API Key:</label>
@@ -55,10 +62,18 @@
             </div>
         </div>
 
+        <div id="helpOverlay" class="settings-overlay hidden"></div>
+        <div id="helpPanel" class="settings-panel hidden">
+            <button id="helpClose" class="settings-close" title="Close help" onclick="this.parentElement.classList.add('hidden');document.getElementById('helpOverlay').classList.add('hidden');">
+                <i class="ri-close-line"></i>
+            </button>
+            <div class="help-content markdown-body"></div>
+        </div>
+
         <div class="chat-container">
             <div id="chatMessages" class="chat-messages">
                 <div class="welcome-message">
-                    <h2>Welcome to Naida AI Chat!</h2>
+                    <h2>Welcome to AI Chat Playground!</h2>
                     <p>To get started:</p>
                     <ol>
                         <li>Click the settings icon (<i class="ri-settings-3-line"></i>) in the top right</li>
